@@ -11,12 +11,10 @@ license: MIT
 topics:
   - ethereum
   - web3
+  - erc1271
   - crypto
-  - signing
-  - coinbase
-  - smart-wallet
-  - eip-712
-  - eip-191
+  - blockchain
+  - dart
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
