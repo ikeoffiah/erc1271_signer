@@ -1,0 +1,31 @@
+name: erc1271_signer
+description: >
+  Dart port of viem-style utilities for Ethereum: Coinbase Smart Wallet
+  message signing, EIP-191/EIP-712 hashing, and ERC-1271-compatible signatures.
+version: 0.1.0
+repository: https://github.com/your-username/viem_dart
+issue_tracker: https://github.com/your-username/viem_dart/issues
+documentation: https://github.com/your-username/viem_dart#readme
+homepage: https://github.com/your-username/viem_dart
+license: MIT
+topics:
+  - ethereum
+  - web3
+  - crypto
+  - signing
+  - coinbase
+  - smart-wallet
+  - eip-712
+  - eip-191
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  hashlib: ^2.0.0
+  web3dart: ^2.7.3
+  http: ^1.0.0
+  convert: ^3.1.0
+
+dev_dependencies:
+  lints: ^5.0.0
