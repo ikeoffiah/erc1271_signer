@@ -11,8 +11,10 @@ class ParsedSignature {
 
 /// Parse hex signature (65 bytes: r(32) s(32) v(1)) into r, s, v/yParity.
 ParsedSignature parseSignature(String signatureHex) {
-  final h = signatureHex.startsWith('0x') ? signatureHex.substring(2) : signatureHex;
-  if (h.length != 130) throw ArgumentError('Signature must be 65 bytes (130 hex chars)');
+  final h =
+      signatureHex.startsWith('0x') ? signatureHex.substring(2) : signatureHex;
+  if (h.length != 130)
+    throw ArgumentError('Signature must be 65 bytes (130 hex chars)');
   final rHex = '0x${h.substring(0, 64)}';
   final sHex = '0x${h.substring(64, 128)}';
   final vOrY = int.parse(h.substring(128, 130), radix: 16);

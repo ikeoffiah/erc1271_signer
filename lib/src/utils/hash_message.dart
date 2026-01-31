@@ -24,6 +24,7 @@ String hashMessage(dynamic message) {
   final sizeInBytes = dataSize(messageHex);
   final prefixHex = stringToHex('$presignMessagePrefix$sizeInBytes');
   final combined = concatHex([prefixHex, messageHex]);
-  final bytes = hex.decode(combined.startsWith('0x') ? combined.substring(2) : combined);
+  final bytes =
+      hex.decode(combined.startsWith('0x') ? combined.substring(2) : combined);
   return keccak256Hex(bytes);
 }

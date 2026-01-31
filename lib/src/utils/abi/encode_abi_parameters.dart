@@ -8,7 +8,8 @@ import '../pad.dart';
 import '../data_size.dart';
 
 /// Minimal ABI encode for types we need: uint8, uint256, bytes32, bytes, address, tuple, bytes[].
-String encodeAbiParameters(List<Map<String, dynamic>> params, List<dynamic> values) {
+String encodeAbiParameters(
+    List<Map<String, dynamic>> params, List<dynamic> values) {
   if (params.length != values.length) {
     throw ArgumentError('Params and values length mismatch');
   }
@@ -34,14 +35,16 @@ String encodeAbiParameters(List<Map<String, dynamic>> params, List<dynamic> valu
       final len = bytes.length;
       final paddedLen = ((len + 31) ~/ 32) * 32;
       dynamicParts.add(numberToHex(BigInt.from(len), size: 32));
-      dynamicParts.add(padHex('0x${hex.encode(bytes)}', size: paddedLen == 0 ? 32 : paddedLen, right: true));
+      dynamicParts.add(padHex('0x${hex.encode(bytes)}',
+          size: paddedLen == 0 ? 32 : paddedLen, right: true));
       dynamicOffset += 32 + (paddedLen == 0 ? 32 : paddedLen);
     } else if (type == 'bytes') {
       staticParts.add(numberToHex(BigInt.from(dynamicOffset), size: 32));
       final h = _ensureHex(value);
       final len = dataSize(h);
       final paddedLen = ((len + 31) ~/ 32) * 32;
-      final padded = padHex(h, size: paddedLen == 0 ? 32 : paddedLen, right: true);
+      final padded =
+          padHex(h, size: paddedLen == 0 ? 32 : paddedLen, right: true);
       dynamicParts.add(numberToHex(BigInt.from(len), size: 32));
       dynamicParts.add(padded);
       dynamicOffset += 32 + paddedLen;
@@ -56,7 +59,8 @@ String encodeAbiParameters(List<Map<String, dynamic>> params, List<dynamic> valu
       staticParts.add(numberToHex(BigInt.from(dynamicOffset), size: 32));
       final list = value as List;
       final n = list.length;
-      int elemOffset = 32; // first element (length+data) starts 32 bytes after array length word
+      int elemOffset =
+          32; // first element (length+data) starts 32 bytes after array length word
       dynamicParts.add(numberToHex(BigInt.from(n), size: 32));
       for (final _ in list) {
         dynamicParts.add(numberToHex(BigInt.from(elemOffset), size: 32));
@@ -64,7 +68,8 @@ String encodeAbiParameters(List<Map<String, dynamic>> params, List<dynamic> valu
       }
       for (final elem in list) {
         final h = _ensureHex(elem);
-        dynamicParts.add(numberToHex(BigInt.from(32), size: 32)); // each elem 32 bytes
+        dynamicParts
+            .add(numberToHex(BigInt.from(32), size: 32)); // each elem 32 bytes
         dynamicParts.add(padHex(h, size: 32));
       }
       dynamicOffset += 32 + n * 32 + n * (32 + 32);

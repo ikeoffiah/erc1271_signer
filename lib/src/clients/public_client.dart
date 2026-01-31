@@ -65,7 +65,8 @@ class PublicClient {
       throw Exception('Invalid readContract result: $result');
     }
     final h = result.startsWith('0x') ? result.substring(2) : result;
-    final addressHex = h.length >= 64 ? h.substring(24, 64) : h.padLeft(40, '0');
+    final addressHex =
+        h.length >= 64 ? h.substring(24, 64) : h.padLeft(40, '0');
     return '0x${addressHex.toLowerCase()}';
   }
 }

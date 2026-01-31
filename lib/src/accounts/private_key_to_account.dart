@@ -7,8 +7,11 @@ import 'sign_typed_data.dart';
 
 /// Local account (EOA) from private key: address, publicKey, sign, signMessage, signTypedData.
 PrivateKeyAccount privateKeyToAccount(String privateKeyHex) {
-  final pk = privateKeyHex.startsWith('0x') ? privateKeyHex.substring(2) : privateKeyHex;
-  if (pk.length != 64) throw ArgumentError('Private key must be 32 bytes (64 hex)');
+  final pk = privateKeyHex.startsWith('0x')
+      ? privateKeyHex.substring(2)
+      : privateKeyHex;
+  if (pk.length != 64)
+    throw ArgumentError('Private key must be 32 bytes (64 hex)');
   final keyBytes = hexToBytes('0x$pk');
   final publicKey = privateKeyBytesToPublic(keyBytes);
   final publicKeyHex = '0x04${bytesToHex(publicKey, include0x: false)}';

@@ -44,7 +44,8 @@ Future<CoinbaseSmartAccount> toCoinbaseSmartAccount({
 }) async {
   final nonceValue = nonce ?? BigInt.zero;
   final ownersBytes = [padHex(owner.address, size: 32)];
-  final factoryAddress = version == '1.1' ? _factoryAddressV11 : _factoryAddressV1;
+  final factoryAddress =
+      version == '1.1' ? _factoryAddressV11 : _factoryAddressV1;
   final address = await client.readContractAddress(
     address: factoryAddress,
     abiFunctionSignature: 'getAddress(bytes[],uint256)',
