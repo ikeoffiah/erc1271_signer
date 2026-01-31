@@ -46,6 +46,18 @@ void main() async {
 
 For lower-level control (client, account, smart account), use the exported APIs: `getChain`, `privateKeyToAccount`, `toCoinbaseSmartAccount`, `PublicClient`, etc.
 
+## Example
+
+See the [example/](example/) app:
+
+```bash
+cd example
+dart pub get
+dart run lib/main.dart
+```
+
+Edit `example/lib/main.dart` to set your `chainName`, `privateKey`, and `message` (use a test key only).
+
 ## Verification
 
 Signatures produced by this package can be verified with viem’s `publicClient.verifyMessage()` (ERC-1271 / ERC-6492) using the same chain, smart account address, message, and signature.
