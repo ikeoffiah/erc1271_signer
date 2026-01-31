@@ -1,5 +1,5 @@
 import 'package:convert/convert.dart';
-import 'package:web3dart/crypto.dart';
+import 'package:web3dart/web3dart.dart';
 
 import '../utils/keccak256.dart';
 

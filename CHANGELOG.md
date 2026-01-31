@@ -5,3 +5,8 @@
 * `signMessage(chainName, privateKey, message)` returns ERC-1271 wrapped signature.
 * EIP-191 personal sign hashing and EIP-712 typed data hashing (replay-safe domain).
 * Support for Base, Base Sepolia, Mainnet, Sepolia.
+
+
+## 0.1.1
+
+* Upgraded the web3dart package to the latest package.

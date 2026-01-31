@@ -1,9 +1,8 @@
-import 'package:web3dart/crypto.dart';
-
 import 'public_key_to_address.dart';
 import 'sign.dart';
 import 'sign_message.dart';
 import 'sign_typed_data.dart';
+import 'package:web3dart/web3dart.dart';
 
 /// Local account (EOA) from private key: address, publicKey, sign, signMessage, signTypedData.
 PrivateKeyAccount privateKeyToAccount(String privateKeyHex) {
