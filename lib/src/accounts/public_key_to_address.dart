@@ -8,8 +8,9 @@ import '../utils/keccak256.dart';
 String publicKeyToAddressHex(String publicKeyHex) {
   final pk =
       publicKeyHex.startsWith('0x') ? publicKeyHex.substring(2) : publicKeyHex;
-  if (pk.length != 130)
+  if (pk.length != 130){
     throw ArgumentError('Expected 65-byte uncompressed public key (130 hex)');
+  }
   final pubKeyBytes = hexToBytes(publicKeyHex);
   // Ethereum: keccak256(pubkey[1:33]) then last 20 bytes
   final toHash = pubKeyBytes.sublist(1); // skip 0x04

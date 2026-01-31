@@ -1,6 +1,6 @@
 /// Dart port of viem utilities for Coinbase Smart Wallet message signing.
 
-library erc1271_signer;
+library;
 
 export 'sign_message.dart';
 export 'src/account_abstraction/to_coinbase_smart_account.dart';
