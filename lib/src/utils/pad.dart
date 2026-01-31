@@ -19,10 +19,14 @@ List<int> padBytes(List<int> bytes, {int size = 32, bool right = false}) {
   if (size == 0) return List.from(bytes);
   final result = List<int>.filled(size, 0);
   if (right) {
-    for (int i = 0; i < bytes.length; i++) {result[i] = bytes[i];}
+    for (int i = 0; i < bytes.length; i++) {
+      result[i] = bytes[i];
+    }
   } else {
     final offset = size - bytes.length;
-    for (int i = 0; i < bytes.length; i++) {result[offset + i] = bytes[i];}
+    for (int i = 0; i < bytes.length; i++) {
+      result[offset + i] = bytes[i];
+    }
   }
   return result;
 }

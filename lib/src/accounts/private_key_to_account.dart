@@ -10,7 +10,7 @@ PrivateKeyAccount privateKeyToAccount(String privateKeyHex) {
   final pk = privateKeyHex.startsWith('0x')
       ? privateKeyHex.substring(2)
       : privateKeyHex;
-  if (pk.length != 64){
+  if (pk.length != 64) {
     throw ArgumentError('Private key must be 32 bytes (64 hex)');
   }
   final keyBytes = hexToBytes('0x$pk');

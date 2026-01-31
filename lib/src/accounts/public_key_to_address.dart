@@ -8,7 +8,7 @@ import '../utils/keccak256.dart';
 String publicKeyToAddressHex(String publicKeyHex) {
   final pk =
       publicKeyHex.startsWith('0x') ? publicKeyHex.substring(2) : publicKeyHex;
-  if (pk.length != 130){
+  if (pk.length != 130) {
     throw ArgumentError('Expected 65-byte uncompressed public key (130 hex)');
   }
   final pubKeyBytes = hexToBytes(publicKeyHex);
