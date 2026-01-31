@@ -6,8 +6,8 @@ import '../encoding.dart';
 import 'parse_signature.dart';
 
 /// Wrap owner signature for Coinbase Smart Wallet: (ownerIndex, signatureData).
-/// Matches viem's layout: single-tuple encoding has leading offset word (32),
-/// then tuple (ownerIndex, offset, length, data). Prepend 32 so verification (viem/ERC-1271) accepts it.
+/// single-tuple encoding has leading offset word (32),
+/// then tuple (ownerIndex, offset, length, data).
 String wrapSignature({int ownerIndex = 0, required String signature}) {
   String signatureData = signature;
   if (dataSize(signature) == 65) {
@@ -25,6 +25,6 @@ String wrapSignature({int ownerIndex = 0, required String signature}) {
     ],
     [BigInt.from(ownerIndex), signatureData],
   );
-  // viem encodes a single tuple as [offset_to_tuple_data=32][tuple_data]; prepend so layout matches
+  // encodes a single tuple as [offset_to_tuple_data=32][tuple_data]; prepend so layout matches
   return concatHex([numberToHex(BigInt.from(32), size: 32), tupleEncoded]);
 }

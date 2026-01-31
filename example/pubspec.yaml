@@ -1,5 +1,5 @@
-name: viem_dart_example
-description: Example usage of viem_dart signMessage.
+name: erc1271_signer_dart_example
+description: Example usage of erc1271_signer signMessage.
 version: 0.0.1
 publish_to: none
 

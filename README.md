@@ -62,6 +62,3 @@ Edit `example/lib/main.dart` to set your `chainName`, `privateKey`, and `message
 
 Signatures produced by this package can be verified with viem’s `publicClient.verifyMessage()` (ERC-1271 / ERC-6492) using the same chain, smart account address, message, and signature.
 
-## License
-
-MIT

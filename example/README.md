@@ -1,4 +1,4 @@
-# viem_dart example
+# erc1271_signer example
 
 Shows how to use [erc1271_signer](..) to sign a message as a Coinbase Smart Wallet.
 
