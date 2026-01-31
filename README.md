@@ -15,7 +15,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  erc1271_signer: ^0.1.0
+  erc1271_signer: ^0.1.1
 ```
 
 Then run:
