@@ -20,3 +20,6 @@ coverage/
 *.log
 *.swp
 *~
+
+# Local docs (not for git or pub)
+EXPLANATION.md

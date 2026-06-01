@@ -10,3 +10,9 @@
 ## 0.1.1
 
 * Upgraded the web3dart package to the latest package.
+
+
+## 0.1.2
+
+* Updated the `lints` dev dependency from `^5.0.0` to `^6.1.0`.
+* No changes to the public API or runtime dependencies; existing usage is unaffected.
