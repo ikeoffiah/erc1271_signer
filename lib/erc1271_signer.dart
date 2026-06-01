@@ -3,6 +3,8 @@
 library;
 
 export 'sign_message.dart';
+export 'sign_message_external.dart';
+export 'src/account_abstraction/sign_typed_data_owner.dart';
 export 'src/account_abstraction/to_coinbase_smart_account.dart';
 export 'src/accounts/private_key_to_account.dart';
 export 'src/chains/chain.dart';

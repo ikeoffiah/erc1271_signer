@@ -35,18 +35,23 @@ class CoinbaseSmartAccount {
   }
 }
 
-/// Create Coinbase Smart Account from client and owner(s). Version '1.1' or '1'.
-Future<CoinbaseSmartAccount> toCoinbaseSmartAccount({
+/// Computes the counterfactual Coinbase Smart Account address for a single
+/// owner identified by its EOA [ownerAddress] — no private key required.
+///
+/// Useful when the owner key is held externally (e.g. a hardware/biometric
+/// signer) and only the address is known. Uses the same factory derivation as
+/// [toCoinbaseSmartAccount].
+Future<String> coinbaseSmartAccountAddressForOwner({
   required PublicClient client,
-  required PrivateKeyAccount owner,
+  required String ownerAddress,
   String version = '1.1',
   BigInt? nonce,
 }) async {
   final nonceValue = nonce ?? BigInt.zero;
-  final ownersBytes = [padHex(owner.address, size: 32)];
+  final ownersBytes = [padHex(ownerAddress, size: 32)];
   final factoryAddress =
       version == '1.1' ? _factoryAddressV11 : _factoryAddressV1;
-  final address = await client.readContractAddress(
+  return client.readContractAddress(
     address: factoryAddress,
     abiFunctionSignature: 'getAddress(bytes[],uint256)',
     args: [
@@ -54,6 +59,21 @@ Future<CoinbaseSmartAccount> toCoinbaseSmartAccount({
       {'type': 'uint256'},
     ],
     values: [ownersBytes, nonceValue],
+  );
+}
+
+/// Create Coinbase Smart Account from client and owner(s). Version '1.1' or '1'.
+Future<CoinbaseSmartAccount> toCoinbaseSmartAccount({
+  required PublicClient client,
+  required PrivateKeyAccount owner,
+  String version = '1.1',
+  BigInt? nonce,
+}) async {
+  final address = await coinbaseSmartAccountAddressForOwner(
+    client: client,
+    ownerAddress: owner.address,
+    version: version,
+    nonce: nonce,
   );
   return CoinbaseSmartAccount(
     address: address,
